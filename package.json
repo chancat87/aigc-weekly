@@ -34,8 +34,7 @@
     "wrangler": "wrangler"
   },
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.1.55",
-    "rss": "^1.2.2"
+    "@anthropic-ai/claude-agent-sdk": "^0.1.55"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
@@ -72,6 +71,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rimraf": "^6.1.2",
+    "rss": "^1.2.2",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "^0.16.8",
     "tsx": "^4.20.6",

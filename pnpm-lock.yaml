@@ -11,9 +11,6 @@ importers:
       '@anthropic-ai/claude-agent-sdk':
         specifier: ^0.1.55
         version: 0.1.55(zod@4.1.13)
-      rss:
-        specifier: ^1.2.2
-        version: 1.2.2
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^6.2.0
@@ -117,6 +114,9 @@ importers:
       rimraf:
         specifier: ^6.1.2
         version: 6.1.2
+      rss:
+        specifier: ^1.2.2
+        version: 1.2.2
       simple-git-hooks:
         specifier: ^2.13.1
         version: 2.13.1
