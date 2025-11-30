@@ -1,0 +1,33 @@
+# AIGC Weekly 信息源
+
+## Important Resources
+
+- https://news.ycombinator.com/front Hacker News, 记得抓取 AIGC 相关资讯的原文内容！此信息源往前抓最近7天的数据，URL 格式是 `https://news.ycombinator.com/front?day=2025-11-11`, 其中 `2025-11-11` 替换为对应的日期
+- https://news.ycombinator.com/show Hacker News Show HN 专栏，抓取 AIGC 相关的原文内容！
+- https://t.me/s/miantiao_drafts 自己的 TG 频道，发布一些最近看到的好文或者工具，很重要！记得去抓原文内容！
+- https://app.daily.dev/squads/ai AI 专栏的 daily.dev 频道，抓取 AIGC 相关的原文内容！
+- https://app.daily.dev/squads/promptengineering Prompt Engineering 专栏的 daily.dev 频道，抓取 AIGC 相关的原文内容！
+- https://app.daily.dev/squads/vibecoding Vibecoding 的 daily.dev 频道，抓取 AIGC 相关的原文内容！
+
+## Blogs & Websites
+
+- https://www.anthropic.com/engineering Anthropic 的工程实践，行业风向标。
+- https://claude.com/blog Claude 官方博客，关注最新动态。
+- https://developers.openai.com/blog OpenAI (ChatGPT) 开发者博客，关注技术动向。
+- https://deepmind.google/blog/ DeepMind (Gemini) 官方博客，关注最新研究成果。
+- https://github.blog/ai-and-ml/ GitHub 的 AI 与机器学习相关博客。
+- https://blog.continue.dev/ Continue AI 的官方博客，分享 AI 相关的技术与应用。
+- https://blog.kilo.ai/ Kilo AI 的官方博客，关注最新动态与技术分享。
+
+## Social Media
+
+x.com 有反爬措施，务必使用 `gopher` 的工具去爬取。爬取的时候一定要关注时间，只抓取最近一周的内容！
+
+- https://x.com/dotey
+- https://x.com/vista8
+- https://x.com/op7418
+- https://x.com/shao__meng
+
+## KOL & Influencers
+
+- https://baoyu.io/ 行业大佬，必须关注！
