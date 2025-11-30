@@ -19,15 +19,6 @@
 - https://blog.continue.dev/ Continue AI 的官方博客，分享 AI 相关的技术与应用。
 - https://blog.kilo.ai/ Kilo AI 的官方博客，关注最新动态与技术分享。
 
-## Social Media
-
-x.com 有反爬措施，务必使用 `gopher` 的工具去爬取。爬取的时候一定要关注时间，只抓取最近一周的内容！
-
-- https://x.com/dotey
-- https://x.com/vista8
-- https://x.com/op7418
-- https://x.com/shao__meng
-
 ## KOL & Influencers
 
 - https://baoyu.io/ 行业大佬，必须关注！
