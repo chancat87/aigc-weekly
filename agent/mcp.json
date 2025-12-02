@@ -1,9 +1,5 @@
 {
   "mcpServers": {
-    "exa": {
-      "type": "http",
-      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,crawling_exa&exaApiKey=${EXA_API_KEY}"
-    },
     "firecrawl": {
       "type": "http",
       "url": "https://mcp.firecrawl.dev/${FIRECRAWL_API_KEY}/v2/mcp"
