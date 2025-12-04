@@ -8,6 +8,8 @@
 
 **RSS订阅**: <https://aigc-weekly.agi.li/rss.xml>
 
+![aigc-weekly](https://socialify.git.ci/ccbikai/aigc-weekly/image?description=1&forks=1&name=1&owner=1&pattern=Circuit+Board&stargazers=1&theme=Auto)
+
 ## 🚀 特性
 
 - **AI 智能策展**：利用 Agentic AI Agent 自动发现和筛选内容。
