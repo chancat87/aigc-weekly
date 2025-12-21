@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import markdownIt from 'markdown-it-ts'
 import Link from 'next/link'
 
 import { Pagination } from '@/components/theme/Pagination'
@@ -7,6 +6,7 @@ import { Pagination } from '@/components/theme/Pagination'
 import { PostMeta } from '@/components/theme/PostMeta'
 import { TagList } from '@/components/theme/TagList'
 import { TerminalLayout } from '@/components/theme/TerminalLayout'
+import { renderMarkdown } from '@/lib/markdown'
 import { getWeeklyBySlug } from '@/lib/weekly/data'
 
 interface WeeklyDetailPageProps {
@@ -48,12 +48,7 @@ export default async function WeeklyDetailPage({ params }: WeeklyDetailPageProps
     )
   }
 
-  const markdownRenderer = markdownIt({
-    html: false,
-    linkify: true,
-    typographer: true,
-  })
-  const html = markdownRenderer.render(weekly.content)
+  const html = renderMarkdown(weekly.content)
 
   const prevLink = weekly.prev
     ? { href: `/weekly/${weekly.prev.slug}`, text: weekly.prev.title }

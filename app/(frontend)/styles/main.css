@@ -125,16 +125,19 @@ body {
 h1 {
   font-size: calc(var(--font-size) * 1.45);
   letter-spacing: 0;
+  color: var(--accent);
 }
 
 h2 {
   font-size: calc(var(--font-size) * 1.35);
   letter-spacing: 0;
+  color: var(--accent);
 }
 
 h3 {
   font-size: calc(var(--font-size) * 1.15);
   letter-spacing: 0;
+  color: var(--accent);
 }
 
 h4,

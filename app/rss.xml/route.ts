@@ -1,7 +1,7 @@
 import process from 'node:process'
-import markdownIt from 'markdown-it-ts'
 import RSS from 'rss'
 import { siteConfig } from '@/lib/config'
+import { renderMarkdown } from '@/lib/markdown'
 import { getWeeklyList } from '@/lib/weekly/data'
 
 export const revalidate = 86400 // 1 day in seconds
@@ -10,11 +10,6 @@ export async function GET() {
   const weeklyResult = await getWeeklyList({ pageSize: 10 })
   const weeks = weeklyResult.items
   const baseUrl = siteConfig.metadataBase && siteConfig.metadataBase.toString().replace(/\/$/, '')
-  const markdownRenderer = markdownIt({
-    html: false,
-    linkify: true,
-    typographer: true,
-  })
 
   const feed = new RSS({
     title: siteConfig.title,
@@ -32,7 +27,7 @@ export async function GET() {
     feed.item({
       title: week.title,
       description: `
-        ${markdownRenderer.render(week.content)}
+        ${renderMarkdown(week.content)}
         ${process.env.NEXT_TRACKING_IMAGE ? `<img src="${process.env.NEXT_TRACKING_IMAGE}/${week.slug}" alt="${week.title}" width="1" height="1" loading="lazy" aria-hidden="true" style="opacity: 0;pointer-events: none;" />` : ''}
       `,
       url: `${baseUrl}/weekly/${week.slug}`,
