@@ -1,8 +1,9 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import type { ThemePreference } from './constants'
 import type { ThemeContextValue } from './ThemeContext'
-import React, { useCallback, useMemo, useSyncExternalStore } from 'react'
+import { useCallback, useMemo, useSyncExternalStore } from 'react'
 import { THEME_PRESETS, THEME_STORAGE_KEY } from './constants'
 import { ThemeContext } from './ThemeContext'
 
@@ -50,7 +51,7 @@ function updateThemeInStorage(theme: ThemePreference) {
   }
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   // useSyncExternalStore handles the initial state and hydration mismatch logic safely
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import React from 'react'
+import type { ReactNode } from 'react'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
 
 import { ThemeScript } from '@/components/theme/ThemeScript'
@@ -29,7 +29,7 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
+export default async function RootLayout(props: { children: ReactNode }) {
   const { children } = props
 
   return (

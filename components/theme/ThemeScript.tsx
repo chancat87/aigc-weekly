@@ -1,8 +1,8 @@
-import React from 'react'
+import { createElement } from 'react'
 import { themeScript } from './theme-script'
 
 export function ThemeScript() {
-  return React.createElement('script', {
+  return createElement('script', {
     dangerouslySetInnerHTML: {
       __html: themeScript,
     },

@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/config'
 import { renderMarkdown } from '@/lib/markdown'
 import { getWeeklyList } from '@/lib/weekly/data'
 
-export const revalidate = 86400 // 1 day in seconds
+export const revalidate = 3600 // 1h
 
 export async function GET() {
   const weeklyResult = await getWeeklyList({ pageSize: 10 })
