@@ -1,5 +1,12 @@
 import type { CollectionConfig } from 'payload'
+
+import { revalidateWeeklyCache } from '@/lib/weekly/cache'
 // import OvertypeFieldComponent from '@/components/payload/overtype'
+
+async function invalidateWeeklyCache<T>(doc: T): Promise<T> {
+  await revalidateWeeklyCache()
+  return doc
+}
 
 export const Weekly: CollectionConfig = {
   slug: 'weekly',
@@ -9,6 +16,10 @@ export const Weekly: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [({ doc }) => invalidateWeeklyCache(doc)],
+    afterDelete: [({ doc }) => invalidateWeeklyCache(doc)],
   },
   fields: [
     {

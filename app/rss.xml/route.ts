@@ -55,7 +55,7 @@ export async function GET() {
   return new Response(feed.xml({ indent: true }), {
     headers: {
       'Content-Type': 'application/xml',
-      'Cache-Control': `s-maxage=${revalidate}, max-age=${revalidate}, stale-while-revalidate`, // 1 hour cache
+      'Cache-Control': `s-maxage=${revalidate}, max-age=${revalidate}, stale-while-revalidate=86400`, // 1 hour cache
     },
   })
 }

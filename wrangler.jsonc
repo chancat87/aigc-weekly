@@ -9,6 +9,9 @@
   "minify": true,
   "upload_source_maps": true,
   "keep_vars": true,
+  "cache": {
+    "enabled": true
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"

@@ -5,6 +5,8 @@ import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
 import { cache } from 'react'
 
+import { WEEKLY_CACHE_TAG } from '@/lib/weekly/cache'
+
 const DEFAULT_PAGE_SIZE = 3
 const MAX_PAGE_SIZE = 50
 const SITEMAP_PAGE_SIZE = 100
@@ -94,7 +96,7 @@ async function getWeeklyListFromPayload(page: number, pageSize: number): Promise
 
 const getWeeklyListCached = unstable_cache(getWeeklyListFromPayload, ['weekly-list'], {
   revalidate: 3600,
-  tags: ['weekly'],
+  tags: [WEEKLY_CACHE_TAG],
 })
 
 const getWeeklyListByPage = cache(async (page: number, pageSize: number): Promise<WeeklyListResult> => getWeeklyListCached(page, pageSize))
@@ -163,7 +165,7 @@ async function getWeeklyBySlugFromPayload(slug: string): Promise<WeeklyDetail | 
 
 const getWeeklyBySlugCached = unstable_cache(getWeeklyBySlugFromPayload, ['weekly-by-slug'], {
   revalidate: 86400,
-  tags: ['weekly'],
+  tags: [WEEKLY_CACHE_TAG],
 })
 
 const getWeeklyByNormalizedSlug = cache(async (slug: string): Promise<WeeklyDetail | null> => getWeeklyBySlugCached(slug))
@@ -213,7 +215,7 @@ async function getAllWeeklySitemapItemsFromPayload(): Promise<WeeklySitemapItem[
 
 const getAllWeeklySitemapItemsCached = unstable_cache(getAllWeeklySitemapItemsFromPayload, ['weekly-sitemap-items'], {
   revalidate: 604800,
-  tags: ['weekly'],
+  tags: [WEEKLY_CACHE_TAG],
 })
 
 export const getAllWeeklySitemapItems = cache(async (): Promise<WeeklySitemapItem[]> => getAllWeeklySitemapItemsCached())
