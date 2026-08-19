@@ -11,6 +11,7 @@ description: 使用 Payload REST API 将周刊写入 CMS（发布为草稿），
 
 - 环境变量 `PAYLOAD_API_KEY`：来自 Payload `users` 集合为某个用户生成的 API Key。
 - 环境变量 `PAYLOAD_BASE_URL`（推荐）：Payload/Next.js 服务的公开地址（例如 `http://localhost:3000`）。
+- 环境变量 `BARK_PUSH_URL`（可选）：完整的 Bark 推送端点（例如 `https://push.example.com/push/token/`）；未配置时跳过通知。
 
 ## 输入
 
@@ -85,3 +86,8 @@ Content-Type: application/json
 2. **保持草稿**：无论是创建还是更新，都必须写入 `status: "draft"`。
 3. **产物落盘**：将创建/更新成功的响应 JSON 保存为 `published/{week_id}.json`，用于后续恢复与审计。
 4. **失败可诊断**：若请求失败，输出：HTTP 状态码、响应 body（若有）、请求的 URL（不要泄露 `PAYLOAD_API_KEY`）。
+5. **草稿通知**：仅在 Payload `POST`/`PATCH` 成功且响应已保存到 `published/{week_id}.json` 后执行：
+   - 若未配置 `BARK_PUSH_URL`，直接跳过。
+   - 向 `BARK_PUSH_URL` POST JSON，5 秒超时：`title` 为 `{week_id}｜周刊草稿已生成`，`body` 为 `{title}`，`url` 为 `{PAYLOAD_BASE_URL 去掉末尾斜杠}/admin/collections/weekly/{CMS 响应中的文档 id}`。
+   - 必须用 JSON 序列化工具构造请求体，不得用字符串拼接生成 JSON；同时要求 HTTP 成功且响应 JSON 的 `code === 200`。
+   - 通知失败只输出超时、HTTP 状态或响应码等诊断，不打印 `BARK_PUSH_URL` 或任何凭据；不得将已成功写入的草稿判为失败，也不得删除审计产物。

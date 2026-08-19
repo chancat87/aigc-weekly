@@ -164,6 +164,8 @@ timezone: {weekInfo.timezone}
 **输入参数**：将完整周刊参数传递给技能（包含 `title` 与 `filename`）。
 
 **产出**：`published/{week_id}.json`（保存 CMS 响应，用于恢复与审计）。
+
+确认 Payload 草稿写入成功并将 CMS 响应落盘后，按 `publish-weekly` 技能执行可选 Bark 通知；通知失败不影响 Phase 5 完成状态，也不得删除落盘产物。
 ```
 
 ---
