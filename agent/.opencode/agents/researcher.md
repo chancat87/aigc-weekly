@@ -28,7 +28,7 @@ timezone: UTC+0
 
 ### 1. 抓取页面
 
-使用 `firecrawl scrape` 抓取指定 URL 的内容。
+使用 `firecrawl_scrape` 单次请求抓取指定 URL，设置 `formats: ["markdown", "rawHtml"]`。正文使用 `markdown`；图片候选从 `metadata.ogImage` 与 `rawHtml` 中的 `og:image`、`twitter:image`、`img src/data-src/srcset`、`picture source srcset`、`video poster` 提取，并基于 `metadata.url` 解析相对 URL。
 
 ### 2. 识别页面类型
 
@@ -75,6 +75,10 @@ title: 文章标题
 source_url: 原始链接
 date: 发布日期
 source_name: 来源名称
+image_candidates:
+  - url: https://example.com/article-hero.jpg
+    alt: 图片的原始说明
+    kind: hero
 ---
 
 文章正文内容...
@@ -85,6 +89,13 @@ source_name: 来源名称
 - 移除广告、导航栏、侧边栏等噪音
 - 保留核心正文和关键信息
 - 如有代码块，保持格式
+
+**图片候选**：
+
+- 每篇文章最多保留 6 个高价值候选，`url` 必填，`alt` 与 `kind` 可选。
+- 优先级依次为 `og:image`、`twitter:image`、正文 hero；其后才考虑能解释文章内容的正文配图或工具截图。
+- 仅保留公开的 `http`/`https` 图片 URL；排除 `data:`、`blob:`、favicon、头像、Logo、图标、跟踪像素、明显广告及重复 URL。
+- 图片只以 URL 元数据写入 frontmatter，不下载图片，也不改变现有正文内容契约。
 
 ### 5. 去重检查
 

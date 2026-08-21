@@ -29,6 +29,10 @@
       "mode": "subagent",
       "model": "{env:EDITOR_MODEL}"
     },
+    "image-editor": {
+      "mode": "subagent",
+      "model": "{env:EDITOR_MODEL}"
+    },
     "researcher": {
       "mode": "subagent"
     },
