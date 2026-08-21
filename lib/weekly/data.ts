@@ -101,11 +101,23 @@ const getWeeklyListCached = unstable_cache(getWeeklyListFromPayload, ['weekly-li
 
 const getWeeklyListByPage = cache(async (page: number, pageSize: number): Promise<WeeklyListResult> => getWeeklyListCached(page, pageSize))
 
-export async function getWeeklyList(params: WeeklyListParams = {}): Promise<WeeklyListResult> {
+function normalizeWeeklyListParams(params: WeeklyListParams) {
   const page = normalizePositiveInteger(params.page, 1)
   const pageSize = normalizePositiveInteger(params.pageSize, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE)
 
+  return { page, pageSize }
+}
+
+export async function getWeeklyList(params: WeeklyListParams = {}): Promise<WeeklyListResult> {
+  const { page, pageSize } = normalizeWeeklyListParams(params)
+
   return getWeeklyListByPage(page, pageSize)
+}
+
+export async function getWeeklyListUncached(params: WeeklyListParams = {}): Promise<WeeklyListResult> {
+  const { page, pageSize } = normalizeWeeklyListParams(params)
+
+  return getWeeklyListFromPayload(page, pageSize)
 }
 
 async function getWeeklyBySlugFromPayload(slug: string): Promise<WeeklyDetail | null> {

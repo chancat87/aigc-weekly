@@ -3,12 +3,14 @@ import RSS from 'rss'
 import { siteConfig } from '@/lib/config'
 import { renderMarkdown } from '@/lib/markdown'
 import { getBaseUrl } from '@/lib/url'
-import { getWeeklyList } from '@/lib/weekly/data'
+import { getWeeklyListUncached } from '@/lib/weekly/data'
 
-export const revalidate = 3600 // 1h
+const RSS_CACHE_TTL_SECONDS = 3600
+
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const weeklyResult = await getWeeklyList({ pageSize: 10 })
+  const weeklyResult = await getWeeklyListUncached({ pageSize: 10 })
   const weeks = weeklyResult.items
   const baseUrl = getBaseUrl()
 
@@ -55,7 +57,7 @@ export async function GET() {
   return new Response(feed.xml({ indent: true }), {
     headers: {
       'Content-Type': 'application/xml',
-      'Cache-Control': `s-maxage=${revalidate}, max-age=${revalidate}, stale-while-revalidate=86400`, // 1 hour cache
+      'Cache-Control': `s-maxage=${RSS_CACHE_TTL_SECONDS}, max-age=${RSS_CACHE_TTL_SECONDS}, stale-while-revalidate=86400`, // 1 hour cache
     },
   })
 }
