@@ -65,6 +65,13 @@
         "baseURL": "{env:ANTHROPIC_BASE_URL}",
         "apiKey": "{env:ANTHROPIC_API_KEY}"
       }
+    },
+    "deepseek": {
+      "npm": "@ai-sdk/deepseek",
+      "options": {
+        "baseURL": "{env:DEEPSEEK_BASE_URL}",
+        "apiKey": "{env:DEEPSEEK_API_KEY}"
+      }
     }
   }
 }
