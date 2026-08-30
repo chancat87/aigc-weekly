@@ -94,6 +94,12 @@
   margin-top: 25px;
 }
 
+/* 正文图片占满容器宽度并按原始比例高度自适应，防止拉伸变形 */
+.post-content img {
+  width: 100%;
+  height: auto;
+}
+
 .post-cover {
   margin: 25px 0;
 }
