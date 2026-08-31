@@ -16,7 +16,7 @@ description: 负责筛选、视觉检查周刊正文图片并生成 images.yaml�
 2. 每篇最多检查 4 个候选，优先 hero、社交分享主图和能解释条目的工具截图。高质量图片不足 5 张时宁缺毋滥。
 3. 对候选执行 `node .opencode/image-utils.mjs preview '<url>'` 生成预览 URL，再使用 `curl --fail --location --max-time 20 --output tmp/images/{week_id}/<安全文件名>.webp '<预览 URL>'` 下载。
 4. 下载成功后，必须调用 OpenCode `read` 工具读取该 WebP 作为视觉附件并检查。拒绝不相关、低清、纯 Logo/头像、营销横幅、严重文字堆叠和重复图片；工具截图仅在确实能解释条目时保留。
-5. 为通过检查的图片确定 `focal_x`、`focal_y`，执行 `node .opencode/image-utils.mjs final '<源 URL>' <focal_x> <focal_y>` 生成最终 wsrv URL；焦点仅用于生成 URL，不写入 `images.yaml`。
+5. 对通过检查的图片执行 `node .opencode/image-utils.mjs final '<源 URL>'` 生成最终 wsrv URL；最终图片保持原图比例，仅限制宽度为 1200。
 6. 写入合法 `images.yaml`。保留临时图片供 sandbox 内排查，不要删除任何周次目录。
 
 # 输出格式
